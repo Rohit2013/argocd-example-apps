@@ -9,7 +9,7 @@ spec:
   - name: foo-app
     image: hashicorp/http-echo:0.2.3
     args:
-    - "-text=foo"
+    - "-text={"_links":{"self":{"href":"https://rptsvc-qaautocand.sc25k8scl01.cksdc25.c.eu-de-1.cloud.sap/manage","templated":false},"health":{"href":"https://rptsvc-qaautocand.sc25k8scl01.cksdc25.c.eu-de-1.cloud.sap/manage/health","templated":false},"health-path":{"href":"https://rptsvc-qaautocand.sc25k8scl01.cksdc25.c.eu-de-1.cloud.sap/manage/health/{*path}","templated":true},"info":{"href":"https://rptsvc-qaautocand.sc25k8scl01.cksdc25.c.eu-de-1.cloud.sap/manage/info","templated":false},"metrics-requiredMetricName":{"href":"https://rptsvc-qaautocand.sc25k8scl01.cksdc25.c.eu-de-1.cloud.sap/manage/metrics/{requiredMetricName}","templated":true},"metrics":{"href":"https://rptsvc-qaautocand.sc25k8scl01.cksdc25.c.eu-de-1.cloud.sap/manage/metrics","templated":false}}}"
 ---
 kind: Service
 apiVersion: v1
@@ -33,7 +33,7 @@ spec:
   - name: bar-app
     image: hashicorp/http-echo:0.2.3
     args:
-    - "-text=bar"
+    - "-text={"_links":{"self":{"href":"https://rptsvc-qaautocand.sc25k8scl01.cksdc25.c.eu-de-1.cloud.sap/manage","templated":false},"health":{"href":"https://rptsvc-qaautocand.sc25k8scl01.cksdc25.c.eu-de-1.cloud.sap/manage/health","templated":false},"health-path":{"href":"https://rptsvc-qaautocand.sc25k8scl01.cksdc25.c.eu-de-1.cloud.sap/manage/health/{*path}","templated":true},"info":{"href":"https://rptsvc-qaautocand.sc25k8scl01.cksdc25.c.eu-de-1.cloud.sap/manage/info","templated":false},"metrics-requiredMetricName":{"href":"https://rptsvc-qaautocand.sc25k8scl01.cksdc25.c.eu-de-1.cloud.sap/manage/metrics/{requiredMetricName}","templated":true},"metrics":{"href":"https://rptsvc-qaautocand.sc25k8scl01.cksdc25.c.eu-de-1.cloud.sap/manage/metrics","templated":false}}}"
 ---
 kind: Service
 apiVersion: v1
@@ -55,14 +55,14 @@ spec:
   - http:
       paths:
       - pathType: Prefix
-        path: "/foo"
+        path: "/foo/manage"
         backend:
           service:
             name: foo-service
             port:
               number: 5678
       - pathType: Prefix
-        path: "/bar"
+        path: "/bar/manage"
         backend:
           service:
             name: bar-service
